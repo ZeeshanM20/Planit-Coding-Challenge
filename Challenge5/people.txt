@@ -1,5 +1,5 @@
 name,DOB,nationality
-Gary,15/6/1995,Indonesia
+Gary,15/06/1995,Indonesia
 Albert,03/11/1995,China
 Mildred,02/10/1995,Peru
 Russell,10/03/1997,Belarus

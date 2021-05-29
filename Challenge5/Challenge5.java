@@ -1,8 +1,7 @@
 import java.util.Scanner;
-import java.util.Date;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.io.File;
-import java.text.SimpleDateFormat; 
+import java.time.format.DateTimeFormatter;
 
 import java.io.FileNotFoundException;  // Import this class to handle errors
 
@@ -19,7 +18,8 @@ public class Challenge5{
       while (reader.hasNextLine()) {
         String data = reader.nextLine();
         String[] values = data.split(",");
-        Date dob = new SimpleDateFormat("dd/MM/yyyy").parse(values[1]);  
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dob = LocalDate.parse(values[1], formatter); 
         registry.addPerson(values[0], dob, values[2]);
       }
       reader.close();
@@ -36,7 +36,7 @@ public class Challenge5{
       System.out.println("Enter AVG to claculate the average age of the peopl in the list");
       System.out.println("Enter S to find all the people with age less than variable N");
       System.out.println("Enter UC to obtain a list of unique countries");
-      System.out.println("Enter EX to Exit program");
+      System.out.println("Enter Q to Exit program");
 
       Scanner input = new Scanner(System.in);  
       String choice = input.nextLine().toUpperCase();
@@ -61,7 +61,7 @@ public class Challenge5{
         case "UC":
           System.out.println("Obtain a list of unique countries");
           break;
-        case "EX":
+        case "Q":
           System.out.println("Exit");
           run = false;
           break;
