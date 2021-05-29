@@ -27,8 +27,6 @@ public class Challenge5{
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
-    System.out.println(registry.people.size());
-    System.out.println(registry.duplicates.size());
 
     while (run == true) {
       System.out.println("Enter D for a list of duplicates");
@@ -46,7 +44,8 @@ public class Challenge5{
            System.out.println(registry.getFormatedDuplicates() + "\n");
           break;
         case "RD":
-          System.out.println("Alter the original list and remove duplicates");
+          registry.removeDuplicates();
+          System.out.println("Duplicates removed from originl list" + "\n");
           break;
         case "AVG":
           System.out.println("Calculate the average age");
