@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Registry{
@@ -27,5 +29,27 @@ public class Registry{
       duplicatesArray.add("\n" + "Name: " + duplicatePerson.getName() + ", Date of Birth: " +  duplicatePerson.getDOB() + ", Nationality: " +  duplicatePerson.getNationality());    
     });
       return duplicatesArray;
+  }
+
+  public boolean removeDuplicates() {
+    try {
+      File file = new File("people.txt");
+      FileWriter fileWriter = new FileWriter(file, false); 
+      fileWriter.write("name,DOB,nationality" + "\n");
+      people.forEach((person) -> { 
+        try {
+          fileWriter.write(person.getName() + "," + person.getDOB() + "," + person.getNationality() + "\n");          
+        }
+        catch(Exception e) {
+          e.printStackTrace();
+        }
+      });
+      fileWriter.close();
+      duplicates.removeAll(duplicates);
+    } catch (Exception e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+    return true;
   }
 }
