@@ -1,6 +1,5 @@
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Registry{
   public ArrayList<Person> people;
@@ -11,7 +10,7 @@ public class Registry{
     duplicates = new ArrayList<Person>();
   }
 
-  public void addPerson(String name, Date DOB, String nationality) {
+  public void addPerson(String name, LocalDate DOB, String nationality) {
     Person person = new Person( name, DOB, nationality);
     for (Person existingPerson : people) {
       if(existingPerson.getName().equals(person.getName())) {

@@ -1,15 +1,13 @@
-import java.util.Date;
 import java.time.LocalDate;
 import java.time.Period;
 
 public class Person{
   private final String name;
-  private final Date dob;
+  private final LocalDate dob;
   private final String nationality;
   private final int age;
 
-  public Person(String name, Date dob, String nationality) {
-    System.out.println("Age" + this.age);
+  public Person(String name, LocalDate dob, String nationality) {
     this.name = name;
     this.dob = dob;
     this.nationality = nationality;
@@ -19,7 +17,7 @@ public class Person{
     return this.name;
   }
 
-  public Date getDOB() {
+  public LocalDate getDOB() {
     return this.dob;
   }
 
@@ -28,7 +26,6 @@ public class Person{
   }
 
   public int getAge() {
-    LocalDate now = new LocalDate();
-    return Period.between(dob, now).getYears();
+    return Period.between(dob, LocalDate.now()).getYears();
   }
 }
