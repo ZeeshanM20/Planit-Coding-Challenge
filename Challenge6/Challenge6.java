@@ -1,32 +1,14 @@
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.io.File;
-import java.time.format.DateTimeFormatter;
-import java.io.FileNotFoundException;
 
-public class Challenge5{
+public class Challenge6{
   public static void main(String []args) {
 
     Registry registry = new Registry();
     boolean run = true;
 
-    try {
-      File peopleList = new File("people.txt");
-      Scanner reader = new Scanner(peopleList);
-      String headers = reader.nextLine();
-      while (reader.hasNextLine()) {
-        String data = reader.nextLine();
-        String[] values = data.split(",");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate dob = LocalDate.parse(values[1], formatter); 
-        registry.addPerson(values[0], dob, values[2]);
-      }
-      reader.close();
-    } catch (Exception e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
-    }
+    registry.readFile(args[0]);
 
+    //Main loop for program
     while (run == true) {
       System.out.println("Enter D for a list of duplicates");
       System.out.println("Enter RD to remove all duplicates");
@@ -43,21 +25,20 @@ public class Challenge5{
            System.out.println(registry.getFormatedDuplicates() + "\n");
           break;
         case "RD":
-          registry.removeDuplicates();
-          System.out.println("\n Duplicates removed from originl list" + "\n");
+          registry.removeDuplicates(args[0]);
+          System.out.println("\nDuplicates removed from originl list" + "\n");
           break;
         case "AVG":
-          System.out.println("\n The average age for people in the list is: " + registry.getAverageAge() + "\n");
+          System.out.println("\nThe average age for people in the list is: " + registry.getAverageAge() + "\n");
           break;
         case "S":
-          // System.out.println("Find all the people with age less than N");
-          System.out.println("\n Enter a value for N \n");
+          System.out.println("\nEnter a value for N \n");
           Scanner sc = new Scanner(System.in);  
           int n = sc.nextInt();
           System.out.println(registry.getPeopleWithAgeLessThan(n) + "\n");
           break;
         case "UC":
-          System.out.println("\n Following is a list of the unique countries \n" + registry.getUniqueCountries() + "\n");
+          System.out.println("\nFollowing is a list of the unique countries \n" + registry.getUniqueCountries() + "\n");
           break;
         case "Q":
           System.out.println("Exit");
