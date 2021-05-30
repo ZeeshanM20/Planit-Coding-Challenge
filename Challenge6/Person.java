@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.Period;
 
+// Person class to create instances of people from provided list.
 public class Person{
   private final String name;
   private final LocalDate dob;
@@ -25,6 +26,7 @@ public class Person{
     return this.nationality;
   }
 
+  // Calculating age from passed date of births.
   public int getAge() {
     return Period.between(dob, LocalDate.now()).getYears();
   }
