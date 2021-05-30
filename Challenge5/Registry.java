@@ -2,10 +2,13 @@ import java.time.LocalDate;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Registry{
   public ArrayList<Person> people;
   public ArrayList<Person> duplicates;
+  public int sumOfAges = 0;
 
   public Registry() {
     people = new ArrayList<Person>();
@@ -28,7 +31,7 @@ public class Registry{
     duplicates.forEach((duplicatePerson) -> {
       duplicatesArray.add("\n" + "Name: " + duplicatePerson.getName() + ", Date of Birth: " +  duplicatePerson.getDOB() + ", Nationality: " +  duplicatePerson.getNationality());    
     });
-      return duplicatesArray;
+    return duplicatesArray;
   }
 
   public boolean removeDuplicates() {
@@ -51,5 +54,32 @@ public class Registry{
       e.printStackTrace();
     }
     return true;
+  }
+
+  public Integer getAverageAge() {
+    sumOfAges = 0;
+    people.forEach((currentPerson) -> {
+      sumOfAges = sumOfAges + currentPerson.getAge();
+    });
+    int avgAge = sumOfAges/people.size();
+    return avgAge;
+  }
+
+  public ArrayList<String> getPeopleWithAgeLessThan(int n) {
+    ArrayList<String> peopleArray = new ArrayList<String>();
+    people.forEach((currentPerson) -> {
+      if(currentPerson.getAge() < n) {
+        peopleArray.add("\n" + "Name: " + currentPerson.getName() + ", Date of Birth: " +  currentPerson.getDOB() + ", Nationality: " +  currentPerson.getNationality());    
+      }
+    });
+    return peopleArray;
+  }
+
+  public Set<String> getUniqueCountries() {
+    Set<String> countries = new HashSet<>();
+    people.forEach((currentPerson) -> {
+      countries.add("\n" + currentPerson.getNationality());
+    });
+    return countries;
   }
 }

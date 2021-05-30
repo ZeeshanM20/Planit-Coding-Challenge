@@ -2,8 +2,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 import java.io.File;
 import java.time.format.DateTimeFormatter;
-
-import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.io.FileNotFoundException;
 
 public class Challenge5{
   public static void main(String []args) {
@@ -45,20 +44,20 @@ public class Challenge5{
           break;
         case "RD":
           registry.removeDuplicates();
-          System.out.println("Duplicates removed from originl list" + "\n");
+          System.out.println("\n Duplicates removed from originl list" + "\n");
           break;
         case "AVG":
-          System.out.println("Calculate the average age");
+          System.out.println("\n The average age for people in the list is: " + registry.getAverageAge() + "\n");
           break;
         case "S":
-          System.out.println("Find all the people with age less than N");
-          System.out.println("Enter a value for N");
+          // System.out.println("Find all the people with age less than N");
+          System.out.println("\n Enter a value for N \n");
           Scanner sc = new Scanner(System.in);  
           int n = sc.nextInt();
-          System.out.println("N = " + n);
+          System.out.println(registry.getPeopleWithAgeLessThan(n) + "\n");
           break;
         case "UC":
-          System.out.println("Obtain a list of unique countries");
+          System.out.println("\n Following is a list of the unique countries \n" + registry.getUniqueCountries() + "\n");
           break;
         case "Q":
           System.out.println("Exit");
