@@ -57,5 +57,12 @@ Run the following command by adding the path of your list file, replacing "LIST_
 javac Challenge6.java && java Challenge6 LIST_FILE_PATH
 ```
 
+## Challenge 6 with tests 
 
+A version of Challenge 6 that contains tests and runs on eclipse or a similar IDE can be cloned using the following.
 
+```bash
+git clone https://github.com/ZeeshanM20/planiit-coding-challenge-with-tests.git
+```
+
+Clone the project and follow the readme instructions to get started
